@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  data-science:
+    build: .
+    container_name: pandas_practice_env
+    ports:
+      # - "8888:8888"
+      - "127.0.0.1:8888:8888"
+    volumes:
+      # 将当前目录挂载到容器内的 /app 目录
+      - .:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    # 保持容器运行，并启动 Jupyter
+    stdin_open: true
+    tty: true
+    restart: always
